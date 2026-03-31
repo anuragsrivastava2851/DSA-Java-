@@ -11,7 +11,7 @@ public class printing_subarray {
     public static void print_subarrays(int[] arry){
         for(int i =0; i<arry.length; i++){
             int start=i;
-            for(int j=i; j<arry.length; j++){
+            for(int j=i; j<arry.length; j++){    // j=i+1 also use when we want to print subarray of size 2 or more than 2 but when we want to print all the subarrays then we use j=i because it also include the subarray of size 1 which is also a valid subarray.....
                 int end=j;
                 for(int k=start; k<=end; k++){            // array ke element ko print karne ke liye loop subarray form me.....
 
