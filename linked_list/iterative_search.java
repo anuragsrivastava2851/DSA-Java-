@@ -1,7 +1,7 @@
 package linked_list;
 
-public class linked_list {
-    public static class Node{
+public class iterative_search {
+     public static class Node{
         int data;
         Node next;
         public Node(int data){
@@ -65,47 +65,19 @@ public class linked_list {
         temp.next = newNode;     
         
 }
-public int removeFirst(){
-        if(size==0){
-            System.out.println("Linked List is empty");
-            return Integer.MIN_VALUE;
-        }
-        else if(size==1){
-            int val = head.data;
-            head = tail = null;
-            size=0;
-            return val;
-        }
-        int val = head.data;
-        head = head.next;
-        size--;
-        return val;
-    }
 
-    public int removeLast(){
-        if(size==0){
-            System.out.println("Linked List is empty");
-            return Integer.MIN_VALUE;
-        }
-        else if(size==1){
-            int val = head.data;
-            head = tail = null;
-            size=0;
-            return val;
-        }
+    public int iterativeSearch(int key){
         Node temp = head;
-        for(int i=0 ; i<size-2 ; i++){
-            temp=temp.next;
+        int index = 0;
+        while(temp != null){
+            if(temp.data == key){
+                return index;
+            }
+            temp = temp.next;
+            index++;
         }
-        int val = tail.data;
-        tail = temp;
-        tail.next = null;
-        size--;
-        return val;
+        return -1; // key not found
     }
-
-
-
 
 
     public static void main(String[] args) {
@@ -117,17 +89,10 @@ public int removeFirst(){
         ll.addMiddle(5, 2);
         ll.addLast(4);
         ll.print();
-        System.out.println("Removed first: " + ll.removeFirst());
-        ll.print();
-        System.out.println("Removed last: " + ll.removeLast());
-        ll.print();
-    }
 
-    public void iterativeSearch(int i) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'iterativeSearch'");
+        ll.iterativeSearch(5);
+        ll.iterativeSearch(10);
+      
     }
-   
-    
     
 }
