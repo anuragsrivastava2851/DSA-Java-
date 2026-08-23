@@ -13,10 +13,12 @@ public class linked_list {
 
     public static Node head;
     public static Node tail;
+    public static int size;
 
 
     public void addFirst(int data){
         Node newNode = new Node(data);
+        size++;
         if(head == null){
             head = tail = newNode;
             return;
@@ -28,6 +30,7 @@ public class linked_list {
 
     public void addLast(int data){
         Node newNode = new Node(data);
+        size++;
         if(tail == null){
             head = tail = newNode;
             return;
@@ -51,6 +54,7 @@ public class linked_list {
             return;
         }
         Node newNode = new Node(data);
+        size++;
         Node temp = head;
         int i=0;
         while(i<index-1){
@@ -62,6 +66,45 @@ public class linked_list {
         
 }
 
+public int removeFirst(){
+    if(size==0){
+        System.out.println("Linked List is empty");
+        return Integer.MIN_VALUE;
+    }
+    else if(size==1){
+        int val = head.data;
+        head = tail = null;
+        size=0;
+        return val;
+    }
+    int val = head.data;
+    head = head.next;
+    size--;
+    return val;
+}
+
+public int removeLast(){
+    if(size==0){    
+        System.out.println("Linked List is empty");
+        return Integer.MIN_VALUE;
+    }
+    else if(size==1){
+        int val = head.data;
+        head = tail = null;
+        size=0;
+        return val;
+    }
+
+    Node prev = head;
+    for(int i=0 ; i<size-2 ; i++){
+        prev = prev.next;
+    }
+    int val = prev.next.data;
+    prev.next = null;
+    tail = prev;
+    size--;
+    return val;
+}
 
     public static void main(String[] args) {
         linked_list ll = new linked_list();
