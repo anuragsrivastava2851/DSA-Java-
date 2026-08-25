@@ -1,7 +1,7 @@
 package linked_list;
 
-public class iterative_search {
-     public static class Node{
+public class detect_cycle {
+    public static class Node{
         int data;
         Node next;
         public Node(int data){
@@ -65,23 +65,37 @@ public class iterative_search {
         temp.next = newNode;     
         
 }
+    public Node findMiddle(){ 
+        Node slow= head;
+        Node fast= head;
 
-    public int iterativeSearch(int key){
-        Node temp = head;
-        int index = 0;
-        while(temp != null){
-            if(temp.data == key){
-                return index;
-            }
-            temp = temp.next;
-            index++;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+
         }
-        return -1; // key not found
+
+        return slow;
+
+}
+    public boolean isCyclePresent(){
+        Node slow= head;
+        Node fast= head;
+        
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+
+            if(slow==fast){
+                return true;
+            }
+        }
+
+        return false;
     }
 
-
     public static void main(String[] args) {
-        iterative_search ll = new iterative_search();
+        detect_cycle ll = new detect_cycle();
         ll.addFirst(2);
         ll.addFirst(1);
         ll.addLast(3);
@@ -90,9 +104,10 @@ public class iterative_search {
         ll.addLast(4);
         ll.print();
 
-        System.out.println(ll.iterativeSearch(5));
-        System.out.println(ll.iterativeSearch(10));
-      
+        System.out.println(ll.isCyclePresent());
     }
+
+
     
 }
+

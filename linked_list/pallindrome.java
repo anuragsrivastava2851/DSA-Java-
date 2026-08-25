@@ -78,8 +78,7 @@ public class pallindrome {
         return slow;
 
 }
-
-public boolean isPallindrome(){
+    public boolean isPallindrome(){
     if(head==null || head.next==null){
         return true;
     }
@@ -114,6 +113,8 @@ public boolean isPallindrome(){
     return true;
 
 }
+
+
     
 
     public static void main(String[] args) {
