@@ -1,7 +1,6 @@
 package linked_list;
-
-public class iterative_search {
-     public static class Node{
+public class reverse_linkedList {
+    public static class Node{
         int data;
         Node next;
         public Node(int data){
@@ -64,24 +63,26 @@ public class iterative_search {
         newNode.next = temp.next;
         temp.next = newNode;     
         
-}
-
-    public int iterativeSearch(int key){
-        Node temp = head;
-        int index = 0;
-        while(temp != null){
-            if(temp.data == key){
-                return index;
-            }
-            temp = temp.next;
-            index++;
-        }
-        return -1; // key not found
     }
 
+    public void reverse(){
+        Node prev= null;
+        Node curr= tail= head;
+        Node next;
+
+        while(curr!= null){
+            next=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
+        head=prev;   // head will be previous because at the end current will become null and loop stop and previous will be at the last node which is the new head of the linked list
+    }
+
+    
 
     public static void main(String[] args) {
-        iterative_search ll = new iterative_search();
+        reverse_linkedList ll = new reverse_linkedList();
         ll.addFirst(2);
         ll.addFirst(1);
         ll.addLast(3);
@@ -90,9 +91,8 @@ public class iterative_search {
         ll.addLast(4);
         ll.print();
 
-        ll.iterativeSearch(5);
-        ll.iterativeSearch(10);
-      
+        ll.reverse();
+        ll.print();
     }
     
 }
